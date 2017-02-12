@@ -5,14 +5,22 @@ import java.math.BigDecimal;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
+	
 	public void addProduct(Product product) {
 		// TODO: implement
 	}
 
 	public void addProduct(Product product, Integer quantity) {
 		// TODO: implement
+		
+	    if (quantity == 0) {
+		throw new IllegalArgumentException ("invoice can be zero");
+		
 	}
-
+		if (quantity < 0) {
+		throw new IllegalArgumentException ("invoice can be zero");
+	}
+	}
 	public BigDecimal getSubtotal() {
 		return null;
 	}
