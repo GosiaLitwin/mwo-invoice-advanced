@@ -12,24 +12,41 @@ public abstract class Product {
 	
 
 	protected Product(String name, BigDecimal price, BigDecimal tax) {
+		
+		if (name==null){
+			throw new IllegalArgumentException ("name cannot be empty");
+	}
+		
+		if (name==""){
+			throw new IllegalArgumentException ("name cannot be empty");
+	}
+		
+		if (price==null){
+			throw new IllegalArgumentException ("price cannot be empty");
+	}
+		if (price.compareTo(BigDecimal.ZERO) < 0) {
+				
+		throw new IllegalArgumentException ("price can be negative");
+	}
+							
 		this.name = name;
 		this.price = price;
 		this.taxPercent = tax;
 	}
-
-	public String getName() {
-		return this.name;
+	
+		public String getName() {
+		return name;
 	}
 
 	public BigDecimal getPrice() {
-		return this.price;
+		return price;
 	}
 
 	public BigDecimal getTaxPercent() {
-		return this.taxPercent;
+		return taxPercent;
 	}
 
 	public BigDecimal getPriceWithTax() {
-		return null;
+		return price.multiply(taxPercent).add(price);
 	}
 }
